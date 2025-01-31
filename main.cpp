@@ -1,6 +1,7 @@
 #include <iostream>
+#include "SkipList.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    SkipList<int, int> skipList;
     return 0;
 }
