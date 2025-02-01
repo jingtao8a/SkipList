@@ -4,4 +4,4 @@ project(SkipList)
 set(CMAKE_CXX_STANDARD 11)
 
 include_directories(${PROJECT_SOURCE_DIR})
-add_executable(test main.cpp SkipList.cpp Node.cpp)
+add_executable(test main.cpp)

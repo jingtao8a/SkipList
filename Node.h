@@ -10,7 +10,6 @@ struct Node {
     keyType key;
     valueType value;
     Node** next;
-    int n;
     Node() {}
     Node(keyType key, keyType value, int n) {
         this->key = key;
@@ -19,7 +18,6 @@ struct Node {
         for (int i = 0; i < n; ++i) {
             this->next[i] = nullptr;
         }
-        this->n = n;
     }
     Node(const Node& node)=delete;
     Node(Node&& node)=delete;
