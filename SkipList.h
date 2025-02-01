@@ -88,6 +88,36 @@ public:
         }
         return true;
     }
+
+    bool erase(keyType key) {
+        Node<keyType, valueType>* p = head, *q = nullptr;
+        Node<keyType, valueType>* update[MAX_LEVEL];
+        for (int i = 0; i < MAX_LEVEL; ++i) {
+            update[i] = nullptr;
+        }
+        for (int i = level - 1; i >= 0; --i) {
+            q = p->next[i];
+            while (q != nullptr && q->key < key) {
+                p = q;
+                q = p->next[i];
+            }
+            update[i] = p;
+        }
+        if (q == nullptr || q->key != key) {
+            return false;// key not exist
+        }
+        for (int i = level - 1; i >= 0; --i) {
+            if (update[i]->next[i] == q) {
+                update[i]->next[i] = q->next[i];
+                if (head->next[i] == nullptr) {
+                    --level;
+                }
+            }
+        }
+        delete q;
+        return true;
+    }
+
     //从最高层开始逐层打印
     void print()
     {
